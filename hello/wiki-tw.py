@@ -1,13 +1,7 @@
-import requests
 import json, urllib.request, tweepy
-import os
-from django.shortcuts import render
-from django.http import HttpResponse
 
-from .models import Greeting
-
-# Create your views here.
-def index(request):
+# 各種キーをセット
+#os.environ.get('TIMES',3)
 
 CONSUMER_KEY = os.environ.get('CONSUMER_KEY',3)
 CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET',3)
@@ -30,18 +24,6 @@ st = 'title:' + root['query']['random'][0]['title']
 
 print(st)
 
+print("\n")
 
 api.update_status(status=st)
-
-    return HttpResponse('Hello! ' + st)
-
-
-def db(request):
-
-    greeting = Greeting()
-    greeting.save()
-
-    greetings = Greeting.objects.all()
-
-    return render(request, 'db.html', {'greetings': greetings})
-
