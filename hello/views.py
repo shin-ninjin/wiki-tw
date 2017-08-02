@@ -26,13 +26,9 @@ def index(request):
 	root=json.loads(r.read())
 
 	st = 'title:' + root['query']['random'][0]['title']
-
 	print(st)
-
-
 	api.update_status(status=st)
-
-    return HttpResponse('Hello! ' + st)
+	return HttpResponse('Hello! ' + st)
 
 
 def db(request):
